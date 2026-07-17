@@ -1,0 +1,5 @@
+work/
+.git-data/
+.vercel/
+Thumbs.db
+.DS_Store
