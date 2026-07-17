@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía comercial | Pacífico Business School</title>
+  <style>
+    :root{--navy:#081b3a;--blue:#123f89;--sky:#dcecff;--ink:#15233b;--muted:#5d6b80;--line:#d9e0e9;--paper:#f5f7fa;--white:#fff;--yellow:#ffe45c;--purple:#70649a;--green:#0c705d;--danger:#9d3030;--shadow:0 12px 34px rgba(8,27,58,.10);--radius:18px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+    button,input,select{font:inherit}
+    button,a,input,select{outline-offset:3px}
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #2c73d2}
+    .app-header{background:linear-gradient(120deg,var(--navy),#0d3068);color:var(--white);padding:28px clamp(18px,4vw,56px);position:relative;overflow:hidden}
+    .app-header:after{content:"";position:absolute;width:280px;height:280px;border:54px solid rgba(255,228,92,.18);border-radius:50%;right:-90px;top:-145px}
+    .brand{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#b9d7ff;font-weight:700}
+    h1{font-size:clamp(1.7rem,3vw,2.7rem);line-height:1.08;margin:.35rem 0 .5rem;max-width:900px}
+    .header-sub{margin:0;color:#dbe8fa;max-width:760px}
+    .updated{display:inline-flex;gap:8px;align-items:center;margin-top:18px;padding:7px 11px;border:1px solid rgba(255,255,255,.25);border-radius:999px;font-size:.82rem;color:#eef5ff}
+    .header-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px;position:relative;z-index:1}
+    .header-actions .updated{margin-top:0}
+    .assistant-launch{border:0;border-radius:999px;padding:9px 14px;background:var(--yellow);color:#17233a;font-weight:800;cursor:pointer}
+    .layout{display:grid;grid-template-columns:minmax(270px,340px) minmax(0,1fr);max-width:1500px;margin:0 auto;min-height:calc(100vh - 190px)}
+    .sidebar{border-right:1px solid var(--line);padding:24px 18px;background:#eef2f7}
+    .sidebar-inner{position:sticky;top:0}
+    .field{display:grid;gap:6px;margin-bottom:12px}
+    label,.field-label{font-size:.78rem;font-weight:750;color:#33445e}
+    input,select{width:100%;border:1px solid #b8c4d3;border-radius:10px;padding:10px 11px;background:var(--white);color:var(--ink)}
+    .filters{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .clear-btn,.copy-btn,.compare-btn,.tab-btn,.program-card{border:0;cursor:pointer}
+    .clear-btn{width:100%;padding:9px 12px;border:1px solid #aebccd;background:transparent;border-radius:10px;color:#2b405e;font-weight:700;margin:2px 0 17px}
+    .result-count{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+    .program-list{display:grid;gap:10px}
+    .program-card{text-align:left;background:var(--white);border:1px solid var(--line);padding:14px;border-radius:14px;color:var(--ink);transition:.18s ease}
+    .program-card:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(8,27,58,.08)}
+    .program-card[aria-current="true"]{border-color:var(--blue);box-shadow:0 0 0 2px rgba(18,63,137,.13)}
+    .program-card strong{display:block;line-height:1.25;margin-bottom:8px}
+    .card-meta{display:flex;flex-wrap:wrap;gap:5px}
+    .pill{display:inline-flex;align-items:center;border-radius:999px;background:#e8edf4;color:#31445f;padding:3px 8px;font-size:.7rem;font-weight:700}
+    .pill.accent{background:#dcecff;color:#0a3a75}
+    .main{padding:clamp(18px,3vw,36px);min-width:0}
+    .empty{background:var(--white);border:1px dashed #aebccd;border-radius:var(--radius);padding:40px;text-align:center;color:var(--muted)}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:start}
+    .eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);font-weight:800;margin:0 0 8px}
+    h2{font-size:clamp(1.55rem,2.5vw,2.3rem);line-height:1.12;margin:0 0 12px;color:var(--navy)}
+    .promise{font-size:1.02rem;color:#42536a;max-width:850px;margin:0}
+    .key-panel{background:var(--navy);color:var(--white);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .key-panel h3{font-size:.83rem;text-transform:uppercase;letter-spacing:.08em;color:#9fcbff;margin:0 0 14px}
+    .key-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    .key-item small{display:block;color:#acc4e4;font-size:.7rem;margin-bottom:2px}
+    .key-item strong{display:block;font-size:.9rem;line-height:1.25}
+    .compare-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .compare-btn{padding:9px 13px;border-radius:10px;background:var(--yellow);color:#19243a;font-weight:800}
+    .compare-btn.secondary{background:#e5ebf3;color:#263b59}
+    .profile-box{margin-top:24px;display:flex;gap:14px;align-items:end;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px}
+    .profile-box .field{margin:0;flex:1}
+    .profile-note{font-size:.77rem;color:var(--muted);max-width:390px;margin:0 0 3px}
+    .tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin:24px 0 0;padding-bottom:0;scrollbar-width:thin}
+    .tab-btn{white-space:nowrap;background:transparent;color:#59687c;padding:12px 13px;border-bottom:3px solid transparent;font-weight:750;font-size:.83rem}
+    .tab-btn[aria-selected="true"]{color:var(--blue);border-bottom-color:var(--blue)}
+    .tab-panel{padding:24px 0}
+    .section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .section{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+    .section.wide{grid-column:1/-1}
+    .section h3{font-size:1rem;margin:0 0 10px;color:var(--navy)}
+    .section p{margin:0 0 9px}
+    .clean-list{margin:0;padding-left:19px}
+    .clean-list li+li{margin-top:7px}
+    .missing{color:#7c4d00;background:#fff4cc;padding:2px 6px;border-radius:5px;font-weight:700}
+    .speech-card{background:var(--white);border-left:5px solid var(--blue);padding:18px;border-radius:0 14px 14px 0;box-shadow:var(--shadow);margin-bottom:16px}
+    .speech-card h3{margin:0 0 9px;color:var(--navy)}
+    .speech-text{white-space:pre-line;margin:0;color:#253650}
+    .copy-btn{margin-top:13px;padding:8px 11px;background:#e4edfa;color:#123f89;border-radius:9px;font-weight:800;font-size:.79rem}
+    .copy-btn.copied{background:#d8f4e9;color:var(--green)}
+    .module{border-left:3px solid var(--purple);padding:3px 0 3px 13px;margin-bottom:15px}
+    .module strong{display:block;color:var(--navy);margin-bottom:4px}
+    .faculty-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .faculty{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:16px}
+    .faculty h3{margin:0 0 3px;font-size:1rem;color:var(--navy)}
+    .faculty .role{font-size:.76rem;color:var(--blue);font-weight:800;text-transform:uppercase;margin-bottom:8px}
+    .faculty p{font-size:.88rem;color:#4b5b70;margin:0}
+    .compare-wrap{overflow-x:auto}
+    table{border-collapse:collapse;width:100%;background:var(--white);font-size:.86rem}
+    th,td{padding:11px;border:1px solid var(--line);text-align:left;vertical-align:top}
+    th{background:#e9eff7;color:var(--navy)}
+    .modal{border:0;border-radius:18px;padding:0;width:min(1020px,94vw);max-height:88vh;box-shadow:0 28px 80px rgba(0,0,0,.35)}
+    .modal::backdrop{background:rgba(6,19,40,.66)}
+    .modal-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:18px 20px;background:var(--navy);color:var(--white)}
+    .modal-head h2{color:var(--white);font-size:1.2rem;margin:0}
+    .modal-close{border:1px solid rgba(255,255,255,.5);background:transparent;color:var(--white);border-radius:8px;padding:6px 10px;cursor:pointer}
+    .modal-body{padding:18px;overflow:auto;max-height:72vh}
+    .assistant-modal{width:min(760px,94vw)}
+    .assistant-intro{margin:0 0 12px;color:var(--muted);font-size:.84rem}
+    .assistant-log{display:grid;gap:10px;min-height:190px;max-height:48vh;overflow-y:auto;padding:4px 4px 14px}
+    .assistant-message{max-width:88%;padding:11px 13px;border-radius:14px;white-space:pre-line}
+    .assistant-message.user{justify-self:end;background:#dcecff;color:#12355f;border-bottom-right-radius:4px}
+    .assistant-message.bot{justify-self:start;background:#edf1f6;color:#24354d;border-bottom-left-radius:4px}
+    .assistant-message .assistant-source{display:block;margin-top:7px;font-size:.72rem;color:#5d6b80;font-weight:700}
+    .assistant-suggestions{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 13px}
+    .assistant-suggestion{border:1px solid #aebccd;background:var(--white);color:#29415f;border-radius:999px;padding:6px 10px;cursor:pointer;font-size:.78rem}
+    .assistant-form{display:grid;grid-template-columns:1fr auto;gap:8px;border-top:1px solid var(--line);padding-top:13px}
+    .assistant-form button{border:0;border-radius:10px;background:var(--blue);color:var(--white);padding:10px 16px;font-weight:800;cursor:pointer}
+    .assistant-limit{margin:9px 0 0;font-size:.72rem;color:var(--muted)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .notice{border-left:4px solid #d09800;background:#fff7da;padding:12px 14px;color:#594100;border-radius:0 10px 10px 0}
+    .source{font-size:.75rem;color:var(--muted);margin-top:10px}
+    footer{max-width:1500px;margin:0 auto;padding:18px 24px 32px;color:var(--muted);font-size:.75rem}
+    @media(max-width:960px){.layout{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--line)}.sidebar-inner{position:static}.program-list{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr}.key-panel{display:grid;grid-template-columns:180px 1fr;gap:12px}.key-panel h3{margin-top:3px}.profile-box{align-items:stretch;flex-direction:column}.profile-note{max-width:none}}
+    @media(max-width:680px){.app-header{padding:22px 18px}.sidebar,.main{padding:16px}.program-list{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.key-panel{display:block}.key-panel h3{margin-bottom:14px}.section-grid,.faculty-grid{grid-template-columns:1fr}.section.wide{grid-column:auto}.profile-box{margin-top:18px}.tabs{margin-top:18px}.tab-btn{padding:11px 10px}.modal-body{padding:10px}th,td{min-width:135px}.hero{gap:16px}.assistant-form{grid-template-columns:1fr}.assistant-form button{width:100%}.assistant-message{max-width:95%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.program-card{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">Pacífico Business School · Herramienta interna</div>
+    <h1>Portafolio y guía comercial de programas</h1>
+    <p class="header-sub">Consulta rápida para orientar conversaciones con prospectos. Todo dato académico y comercial procede de los brochures suministrados.</p>
+    <div class="header-actions"><div class="updated" aria-label="Fecha de actualización">Actualizado: 17 de julio de 2026</div><button class="assistant-launch" id="openAssistant" type="button">Consultar al asistente comercial</button></div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" aria-label="Buscador y portafolio">
+      <div class="sidebar-inner">
+        <div class="field"><label for="search">Buscar programa o palabra clave</label><input id="search" type="search" placeholder="Ej.: datos, liderazgo, finanzas"></div>
+        <div class="filters">
+          <div class="field"><label for="category">Categoría</label><select id="category"><option value="">Todas</option></select></div>
+          <div class="field"><label for="modality">Modalidad</label><select id="modality"><option value="">Todas</option></select></div>
+          <div class="field"><label for="duration">Duración</label><select id="duration"><option value="">Todas</option></select></div>
+          <div class="field"><label for="schedule">Horario</label><select id="schedule"><option value="">Todos</option></select></div>
+          <div class="field"><label for="investment">Inversión</label><select id="investment"><option value="">Todas</option><option value="8500">S/ 8,500</option><option value="8900">S/ 8,900</option></select></div>
+          <div class="field"><label for="professional">Perfil</label><select id="professional"><option value="">Todos</option></select></div>
+        </div>
+        <button class="clear-btn" id="clearFilters" type="button">Limpiar filtros</button>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+        <nav class="program-list" id="programList" aria-label="Programas"></nav>
+      </div>
+    </aside>
+
+    <main class="main" id="mainContent"><div class="empty">Selecciona un programa para ver su ficha y guía comercial.</div></main>
+  </div>
+
+  <dialog class="modal" id="compareDialog" aria-labelledby="compareTitle">
+    <div class="modal-head"><h2 id="compareTitle">Comparación de programas</h2><button class="modal-close" id="closeCompare" type="button">Cerrar</button></div>
+    <div class="modal-body" id="compareBody"></div>
+  </dialog>
+
+  <dialog class="modal assistant-modal" id="assistantDialog" aria-labelledby="assistantTitle">
+    <div class="modal-head"><h2 id="assistantTitle">Asistente comercial PBS</h2><button class="modal-close" id="closeAssistant" type="button">Cerrar</button></div>
+    <div class="modal-body">
+      <p class="assistant-intro">Consulta fechas, inversión, modalidad, horarios, requisitos, docentes, malla, certificación o pide orientación entre programas.</p>
+      <div class="assistant-log" id="assistantLog" aria-live="polite" aria-label="Conversación con el asistente"></div>
+      <div class="assistant-suggestions" aria-label="Preguntas sugeridas">
+        <button class="assistant-suggestion" type="button" data-question="¿Qué programa recomiendas para un gerente que lidera un cambio?">Recomendar para un gerente</button>
+        <button class="assistant-suggestion" type="button" data-question="Compara inversión, duración y modalidad de todos los programas">Comparar programas</button>
+        <button class="assistant-suggestion" type="button" data-question="¿Cuáles son los requisitos de Business Data Analytics?">Requisitos de Data Analytics</button>
+        <button class="assistant-suggestion" type="button" data-question="¿Cómo se obtiene el diploma de Project Finance?">Diploma de Project Finance</button>
+      </div>
+      <form class="assistant-form" id="assistantForm">
+        <label class="sr-only" for="assistantInput">Escribe tu consulta</label>
+        <input id="assistantInput" type="text" autocomplete="off" placeholder="Ej.: ¿Cuál es el horario de Liderazgo Estratégico?" required>
+        <button type="submit">Consultar</button>
+      </form>
+      <p class="assistant-limit">Responde únicamente con la información incluida en esta página. Si el dato no figura en los brochures, indicará “Información por confirmar”.</p>
+    </div>
+  </dialog>
+
+  <footer>Uso comercial interno. Verifica la vigencia de cada edición antes de cerrar una matrícula. Las fechas de los brochures no especifican año.</footer>
+
+  <script>
+  const CONFIRM = "Información por confirmar";
+  const programs = [
+    {
+      id:"business-data-analytics", short:"Business Data Analytics", name:"Programa de Especialización en Business Data Analytics", type:"Programa de Especialización", category:"Datos y analítica", modality:"Remota", duration:"5 meses aproximadamente", durationKey:"5 meses", frequency:"Semanal", schedule:"Martes y jueves, de 7:00 p. m. a 10:00 p. m.", scheduleKey:"Noches entre semana", start:"27 de octubre", investment:8900,
+      promise:"Domina la analítica de datos con visión estratégica e inteligencia artificial aplicada para comprender la información y tomar mejores decisiones.",
+      audience:"Profesionales responsables de marketing, planeamiento, operaciones, inteligencia de negocios y tecnología; y cualquier profesional que desee ampliar sus conocimientos de análisis y gestión de información para mejorar la competitividad empresarial.",
+      profiles:["Gerente o líder","Analista o especialista","Profesional de marketing o ventas","Profesional de operaciones","Profesional de tecnología o datos","Persona que busca cambiar o acelerar su carrera"],
+      requirements:["Grado de bachiller universitario","Mínimo dos años de experiencia laboral","Laptop con Power BI y Orange Data Mining instalados"],
+      objectives:["Desarrollar capacidades de Data Literacy para entender, analizar, interpretar y comunicar datos de manera efectiva.","Plantear productos analíticos desde el customer journey y el modelo de negocio.","Generar insights mediante análisis exploratorio, analítica predictiva y descriptiva, data storytelling y agentes de inteligencia artificial.","Usar Orange Data Mining para analítica predictiva y Power BI para analítica descriptiva.","Conocer elementos para implementar estrategias corporativas de gobierno de datos.","Integrar el proceso analítico, la generación de insights y la toma de decisiones en un trabajo integrador."],
+      differentials:["Docentes con amplia experiencia en Business Intelligence y soluciones analíticas.","Enfoque práctico con construcción y visualización de aplicaciones.","Visión holística del negocio y consideración de las características de las empresas peruanas."],
+      benefits:["Mejorar la participación en decisiones basadas en evidencia.","Comprender aplicaciones de analítica, machine learning e IA generativa en contextos de negocio.","Diseñar dashboards y comunicar resultados mediante data storytelling.","Conectar gobierno, estrategia y uso práctico de datos."],
+      tools:["Power BI","Orange Data Mining","Inteligencia artificial generativa","Agentes de IA"],
+      modules:[
+        {name:"Taller de teambuilding",items:["Integración, vínculos iniciales y trabajo colaborativo"]},
+        {name:"Data Literacy: fundamentos y uso estratégico de los datos",items:["Data literacy y toma de decisiones","Proceso analítico","Pensamiento analítico","Casos de uso","Herramientas tecnológicas"]},
+        {name:"Estadística aplicada para decisiones basadas en datos",items:["Datos descriptivos","Inferencia","Regresiones simples"]},
+        {name:"Gobierno y estrategia de datos para líderes digitales",items:["Estrategia de datos","Gobierno de datos","Implementación y gestión del cambio"]},
+        {name:"Data Storytelling: comunicación de impacto con datos",items:["Estructura narrativa","Diseño de presentaciones","Preparación y ejecución"]},
+        {name:"Aplicaciones de datos: Machine Learning",items:["Aprendizaje supervisado y no supervisado","Análisis exploratorio","Aplicación en negocios"]},
+        {name:"Aplicaciones de datos: IA generativa",items:["Fundamentos","Aplicaciones prácticas","Agentes de IA","Consideraciones de implementación"]},
+        {name:"Aplicaciones de datos: dashboards y tableros",items:["Analítica descriptiva","Diseño centrado en el usuario","Componentes visuales y narrativos"]},
+        {name:"Proyecto integrador",items:["Resolución de desafíos reales con analítica de datos"]},
+        {name:"Conferencia magistral internacional",items:["Tendencias globales y perspectivas actuales"]}
+      ],
+      faculty:[
+        {name:"Alberto Arozena",role:"Director de Soluciones de Inteligencia y Analytics en Intelegia",bio:"Más de 25 años de experiencia gerencial; ex Gerente General de Inmark Perú y Senior Manager en Deloitte. MBA por IE y bachiller en Ingeniería Industrial por la PUCP."},
+        {name:"André Chávez",role:"Gerente de Analítica Comercial e Insights en Apuesta Total",bio:"Experiencia previa en analítica avanzada, People Analytics e inteligencia artificial en organizaciones como Ministerio Público, Backus, Interbank, Claro, Chubb e INEI. Maestro en Ciencia de Datos."},
+        {name:"Martin Widdup",role:"Chief Data Officer - Head of Data, Analytics & CRM en Mibanco",bio:"Experiencia internacional y directiva en Banco Santander, Openbank, Indra, Grupo El Comercio, Pacífico Seguros y Andbank. Director del MBA con enfoque en Business Analytics de PBS."},
+        {name:"Sandro Denegri",role:"Analytics & IA Lead en Pacífico Seguros",bio:"Experiencia en rentabilidad de cartera, ciclo de vida de clientes, indicadores comerciales y CRM. MBA por Centrum PUCP y bachiller en Ingeniería Estadística por la UNI."},
+        {name:"Renzo Chávez",role:"Senior Innovation Lead en Human Growth",bio:"Lidera proyectos de innovación, cultura y talleres de IA y liderazgo. Maestría en Educación por USIL y estudios de maestría en IA Aplicada en el Tecnológico de Monterrey."},
+        {name:"Joel Lapa",role:"Director de Soluciones Analíticas en Datalabs Perú",bio:"Experiencia en estrategia, analítica, investigación de mercados e innovación. MBA Gerencial por Centrum Católica; especializaciones en Business Intelligence, SQL y Power BI."}
+      ],
+      certification:{title:"Diploma del Programa de Especialización en Business Data Analytics",issuer:"Pacífico Business School",conditions:["80% de asistencia al programa","50% de asistencia a las sesiones de cada curso","Aprobación de todos los cursos con nota mínima de 11","Promedio final mínimo de 14 en el programa","No presentar deudas con la universidad"],extra:"Quienes no presenten deudas recibirán además el Certificado de Participación en la Conferencia Magistral Internacional, en formato digital, emitido por Pacífico Business School."},
+      notes:["Una vez efectuado el pago de la matrícula, no se podrá solicitar su devolución.","El programa iniciará si se alcanza el número mínimo de alumnos matriculados establecido por Pacífico Business School.","Iniciadas las clases, la participación es personal e intransferible.","Para matricularse en el siguiente módulo es indispensable no tener deudas con la institución.","La plana docente puede modificarse por fuerza mayor o disponibilidad, manteniendo la calidad y con comunicación anticipada."],
+      source:"BusinessDataAnalytics_JULIO2026-4.pdf"
+    },
+    {
+      id:"liderazgo-estrategico", short:"Liderazgo Estratégico", name:"Programa de Alta Dirección Liderazgo Estratégico y Adaptación al Cambio", type:"Programa de Alta Dirección", category:"Liderazgo", modality:"Semipresencial", duration:"2 meses", durationKey:"2 meses", frequency:CONFIRM, schedule:"Martes de 18:30 a 21:30 (remoto) y sábados de 09:00 a 18:30 (presencial)", scheduleKey:"Mixto: noche y sábado", start:"6 de octubre", investment:8500,
+      promise:"Fortalece el liderazgo mediante métodos, diagnósticos y estrategias para generar cambios adaptativos y afrontar conflictos organizacionales.",
+      audience:"Ejecutivos del sector público y privado que buscan ejercer liderazgo y convertirse en agentes de transformación. El aula reúne empresarios y ejecutivos de los sectores público, privado y ONG vinculados al desarrollo de proyectos o a decisiones estratégicas, con más de dos años de experiencia liderando equipos.",
+      profiles:["Gerente o líder","Emprendedor","Profesional de operaciones","Profesional de tecnología o datos","Persona que busca cambiar o acelerar su carrera"],
+      requirements:["Grado de bachiller universitario","Experiencia profesional mínima de dos años"],
+      objectives:["Diagnosticar el funcionamiento de sistemas organizacionales y sociales, y las fuentes y formas del peligro en el liderazgo.","Diseñar intervenciones estratégicas y respuestas tácticas para producir cambios en equipos, departamentos u organizaciones.","Desarrollar habilidades y potenciar capacidades personales para ejercer liderazgo de forma efectiva."],
+      differentials:["Metodología Harvard basada en aprendizaje activo y vivencias.","Análisis de casos reales y locales vinculados con los conflictos de los participantes.","Taller de teambuilding para liderazgo colaborativo y equipos de alto rendimiento.","Networking estratégico con ejecutivos C-level y líderes de diversas industrias.","Acceso a Red Alumni de Pacífico Business School."],
+      benefits:["Distinguir problemas técnicos de desafíos adaptativos.","Ampliar posibilidades de acción ante conflictos organizacionales.","Liderar con o sin autoridad formal.","Gestionar tensión, caos, diversidad, innovación y tecnología.","Reconocer el valor estratégico de la IA mediante el bootcamp IA_hora GerencIA."],
+      tools:[CONFIRM],
+      modules:[
+        {name:"1. ¿Qué significa ejercer liderazgo? Aprendizaje social y adaptación",items:["Expectativas","Problemas técnicos y adaptativos","Desequilibrio y tensión","Análisis de caso"]},
+        {name:"2. Dinámica de grupos",items:["Propósito movilizador","Autoridad y otros roles","Proceso en los grupos","Análisis de caso"]},
+        {name:"3. Ambiente contenedor",items:["Construcción del ambiente","Valores en contradicción","Protección y responsabilidad individual"]},
+        {name:"4. Creando y modelando el futuro",items:["Supuestos","Aprendizaje","Nuevos espacios para el cambio","Análisis de caso"]},
+        {name:"5. Liderazgo con autoridad",items:["Expectativas sobre la autoridad","Autoridad formal e informal","Autoridad carismática"]},
+        {name:"6. Liderazgo sin autoridad",items:["Limitaciones de la autoridad","Responsabilidad individual","Movilización de grupos"]},
+        {name:"7. Intervención: manejando el caos y el conflicto",items:["Conflicto y aprendizaje adaptativo","Cambio","Intervenciones estratégicas"]},
+        {name:"8. Competencia, colaboración, diversidad, innovación y tecnología",items:["Inclusión y exclusión","Identidad y adaptabilidad","Diversidad","Cohesión y aprendizaje"]},
+        {name:"Bootcamp IA_hora GerencIA",items:["Fundamentos, aplicaciones y límites de la IA","Arenas de la IAG","Modelos generativos","Gobernanza e implementación responsable"]}
+      ],
+      faculty:[
+        {name:"Stefan Reich",role:"Director del Centro de Liderazgo de la Universidad del Pacífico - Lidera UP; Director y Socio Fundador de Adapsys en Perú",bio:"Máster en Administración Pública por Harvard University con especialización en liderazgo; postdoctorado en la Escuela de Medicina de Harvard y doctorado en Psicología Clínica por Chicago School of Professional Psychology."},
+        {name:"Maite Vizcarra",role:"Experta en innovación tecnológica y digitalización",bio:"Keynote speaker en Latinoamérica y escuelas de gobierno e innovación pública en España y Noruega. Ex miembro del Consejo Directivo del Instituto Tecnológico de la Producción y ex consejera de la Agenda Digital Andina."}
+      ],
+      certification:{title:"Diploma del Programa de Alta Dirección Liderazgo Estratégico y Adaptación al Cambio",issuer:"Pacífico Business School y Adapsys",conditions:["80% de asistencia al programa","50% de asistencia a cada curso","No presentar deudas con la universidad"],extra:"El diploma se entrega en formato virtual."},
+      notes:["El programa es semipresencial e incluye tres sesiones presenciales.","Las sesiones de martes son remotas y las de sábado son presenciales."],
+      source:"LIDERAZGOESTRATEGICO_JUNIO5.pdf"
+    },
+    {
+      id:"project-finance", short:"Project Finance", name:"Programa de Especialización en Evaluación Privada de Proyectos & Project Finance", type:"Programa de Especialización", category:"Finanzas", modality:"Remota", duration:"3 meses", durationKey:"3 meses", frequency:"Semanal", schedule:"Martes y jueves, de 6:30 p. m. a 10:30 p. m.", scheduleKey:"Noches entre semana", start:"21 de julio", investment:8900,
+      promise:"Desarrolla una evaluación financiera certera de proyectos complejos, priorizando su rentabilidad y sostenibilidad en el tiempo.",
+      audience:"Profesionales con experiencia que desean evaluar financieramente proyectos; incluye directores, jefes de área, analistas e inversores independientes. La propuesta se dirige especialmente a directores financieros y profesionales con un rol estratégico en decisiones de inversión.",
+      profiles:["Gerente o líder","Analista o especialista","Emprendedor","Profesional de operaciones","Persona que busca cambiar o acelerar su carrera"],
+      requirements:["Grado de bachiller universitario","Mínimo dos años de experiencia laboral"],
+      objectives:["Adoptar conocimientos económicos, contables y estadísticos para valorar proyectos complejos.","Analizar flujo de caja, criterios de decisión, rentabilidad y riesgo.","Valorar empresas mediante flujo de caja descontado y múltiplos.","Comprender opciones reales y estructuras de Corporate Finance y Project Finance."],
+      differentials:["Propuesta especializada para profesionales con responsabilidad en decisiones de inversión.","Enfoque pragmático para aplicar lo aprendido en la empresa o proyecto.","Docentes con trayectoria académica y experiencia en evaluación y desarrollo de proyectos.","Posibilidad de convalidación académica de Finanzas Corporativas y Estructuración y Financiamiento de Proyectos en la Maestría en Finanzas, sujeta a condiciones."],
+      benefits:["Evaluar con mayor precisión la viabilidad de una inversión.","Estructurar flujos de caja y aplicar criterios de decisión.","Incorporar riesgo e incertidumbre en la evaluación.","Valorar empresas y analizar alternativas de financiamiento.","Aplicar opciones reales y Project Finance a decisiones complejas."],
+      tools:[CONFIRM],
+      modules:[
+        {name:"Taller de teambuilding",items:["Integración y trabajo colaborativo"]},
+        {name:"Fundamentos de finanzas y contabilidad",items:["Contabilidad","Estados financieros","Matemática financiera"]},
+        {name:"Flujo de caja y criterios de decisión e indicadores de rentabilidad",items:["Evaluación de proyectos","Flujo de caja","Criterios e indicadores"]},
+        {name:"Criterios de decisión en la práctica",items:["Aplicaciones en evaluación de proyectos","Evaluación de préstamos"]},
+        {name:"Riesgos",items:["Riesgo de una inversión","Tasa de descuento"]},
+        {name:"Valorización de empresas",items:["Flujo de caja descontado","Mercados emergentes","Múltiplos"]},
+        {name:"Opciones reales",items:["Evaluación dinámica y alternativas de cambio"]},
+        {name:"Project Finance",items:["Recursos propios y de terceros","Plazos de deuda","Leasing y bonos"]},
+        {name:"Conferencia magistral internacional",items:["Tendencias globales y perspectivas actuales"]}
+      ],
+      faculty:[
+        {name:"Jorge Li Ning",role:"Ex Asesor de Gerencia en Osinergmin",bio:"Fue Gerente de Políticas y Normas en Sunass y Asesor Económico del Ministerio de Transportes y Comunicaciones. Master of Arts in Economics por Georgetown University."},
+        {name:"Jorge Montesinos",role:"Asesor de la Presidencia Ejecutiva en Osinergmin",bio:"Ha sido Gerente General y Asesor de la Presidencia Ejecutiva en Ositran. Magíster en Administración Pública por CIDE y en Economía Aplicada a Políticas Públicas por la Universidad Alberto Hurtado."},
+        {name:"Sergio Gabilondo",role:"Director de Proyectos en G&A Consultores",bio:"Ha sido Gerente de Operaciones, Administración y Finanzas en los sectores financiero y farmacéutico. Magíster en Finanzas por la Universidad del Pacífico."},
+        {name:"Javier Vásquez",role:"CEO y Founder en HayCambio",bio:"Más de quince años en evaluación de proyectos, valorización, reestructuración y financiamientos mediante Corporate Finance y Project Finance. Ex Sub Director de Gestión de Proyectos en Proinversión."},
+        {name:"Jorge Lladó",role:"Especialista Senior en Mercado de Capitales y Regulación Financiera del BCR",bio:"Magíster en Administración por The University of Texas at Austin y licenciado en Economía por la Universidad del Pacífico."},
+        {name:"Eduardo Rivero",role:"Profesor principal del Departamento Académico de Contabilidad de la Universidad del Pacífico",bio:"Ex Gerente General Adjunto de Fibras Marinas; doctor en Ciencias Contables y Empresariales por la UNMSM y magíster en Administración por la Universidad del Pacífico."}
+      ],
+      certification:{title:"Diploma del Programa de Especialización en Evaluación Privada de Proyectos & Project Finance",issuer:"Pacífico Business School y HR Latam",conditions:["80% de asistencia al programa","50% de asistencia a clases de cada curso","Nota aprobatoria mínima de 11 en cada curso","Promedio general mínimo de 14","No presentar deuda con la universidad"],extra:"El brochure indica que se recibirá Certificado de Notas y Diploma en formato digital. La conferencia internacional entrega Certificado de Participación a quienes asistan y no presenten deudas."},
+      notes:["La convalidación es académica y solo se hace efectiva si se aprueba el programa y el proceso de admisión de la Maestría en Finanzas de Pacífico Business School.","Una vez efectuado el pago de la matrícula, no se podrá solicitar su devolución.","El programa iniciará si se alcanza el número mínimo de alumnos matriculados establecido por Pacífico Business School.","La plana docente puede modificarse por fuerza mayor o disponibilidad, manteniendo la calidad y con comunicación anticipada."],
+      source:"Project Finance 2026-07.pdf"
+    }
+  ];
+
+  const profileGuidance = {
+    "Gerente o líder":{lead:"para tomar decisiones estratégicas y movilizar a tu organización",question:"¿Qué decisión estratégica o reto de equipo necesitas abordar en los próximos meses?",objection:"Necesito algo aplicable a nivel directivo, no solo teoría.",close:"Si el programa responde a ese reto estratégico, ¿te gustaría revisar hoy los requisitos de matrícula?"},
+    "Analista o especialista":{lead:"para convertir tu conocimiento técnico en mayor impacto y capacidad de decisión",question:"¿En qué tipo de decisiones necesitas que tu análisis tenga más influencia?",objection:"No sé si el nivel encaja con mi experiencia actual.",close:"¿Te ayudaría validar juntos cómo tu experiencia se alinea con el público objetivo?"},
+    "Emprendedor":{lead:"para evaluar oportunidades, ordenar decisiones y sostener el crecimiento de tu proyecto",question:"¿Qué decisión de crecimiento, inversión o gestión estás evaluando actualmente?",objection:"Mi agenda es variable y necesito aplicar lo aprendido rápido.",close:"¿Revisamos el horario y el enfoque práctico para confirmar si encajan con tu operación?"},
+    "Profesional de marketing o ventas":{lead:"para comprender mejor al cliente y respaldar decisiones comerciales con evidencia",question:"¿Qué reto de clientes, conversión o rentabilidad te gustaría resolver con más información?",objection:"Mi trabajo es comercial; no sé si el contenido será demasiado técnico.",close:"¿Quieres que revisemos los módulos más conectados con clientes y decisiones comerciales?"},
+    "Profesional de operaciones":{lead:"para mejorar procesos y decidir con una visión integral del negocio",question:"¿Qué proceso, proyecto o cuello de botella requiere hoy una mejor decisión?",objection:"Necesito herramientas que pueda llevar a la operación.",close:"¿Te parece si identificamos qué módulos podrías aplicar primero en tu área?"},
+    "Profesional de tecnología o datos":{lead:"para conectar tecnología y datos con prioridades y resultados de negocio",question:"¿Qué brecha encuentras entre la solución técnica y la decisión de negocio?",objection:"Ya tengo una base técnica; busco una mirada estratégica.",close:"¿Revisamos los diferenciales que conectan la especialidad con la estrategia empresarial?"},
+    "Persona que busca cambiar o acelerar su carrera":{lead:"para fortalecer tu perfil y asumir retos de mayor responsabilidad",question:"¿Qué tipo de posición o responsabilidad quieres alcanzar después de esta formación?",objection:"Quiero saber si el programa realmente aportará a mi siguiente paso profesional.",close:"¿Te gustaría contrastar el contenido y los requisitos con el rol al que aspiras?"}
+  };
+
+  const state={selected:programs[0].id,tab:"summary",profile:"Gerente o líder",compare:new Set()};
+  const $=s=>document.querySelector(s);
+  const money=n=>new Intl.NumberFormat("es-PE",{style:"currency",currency:"PEN",maximumFractionDigits:0}).format(n).replace("PEN","S/");
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+  const missing=s=>s===CONFIRM?`<span class="missing">${CONFIRM}</span>`:esc(s);
+  const list=items=>`<ul class="clean-list">${items.map(x=>`<li>${missing(x)}</li>`).join("")}</ul>`;
+  const getProgram=()=>programs.find(p=>p.id===state.selected);
+
+  function populateFilters(){
+    const fill=(id,values)=>{const el=$(id);[...new Set(values)].sort().forEach(v=>el.insertAdjacentHTML("beforeend",`<option value="${esc(v)}">${esc(v)}</option>`));};
+    fill("#category",programs.map(p=>p.category));fill("#modality",programs.map(p=>p.modality));fill("#duration",programs.map(p=>p.durationKey));fill("#schedule",programs.map(p=>p.scheduleKey));fill("#professional",programs.flatMap(p=>p.profiles));
+  }
+
+  function filteredPrograms(){
+    const q=$("#search").value.trim().toLowerCase();
+    return programs.filter(p=>{
+      const hay=[p.name,p.category,p.promise,p.audience,p.modules.map(m=>m.name).join(" "),p.tools.join(" ")].join(" ").toLowerCase();
+      return (!q||hay.includes(q))&&(!$("#category").value||p.category===$("#category").value)&&(!$("#modality").value||p.modality===$("#modality").value)&&(!$("#duration").value||p.durationKey===$("#duration").value)&&(!$("#schedule").value||p.scheduleKey===$("#schedule").value)&&(!$("#investment").value||p.investment===Number($("#investment").value))&&(!$("#professional").value||p.profiles.includes($("#professional").value));
+    });
+  }
+
+  function renderList(){
+    const rows=filteredPrograms();$("#resultCount").textContent=`${rows.length} de ${programs.length} programas`;
+    $("#programList").innerHTML=rows.map(p=>`<button type="button" class="program-card" data-program="${p.id}" aria-current="${p.id===state.selected}"><strong>${esc(p.short)}</strong><span class="card-meta"><span class="pill accent">${esc(p.category)}</span><span class="pill">${esc(p.modality)}</span><span class="pill">${money(p.investment)}</span></span></button>`).join("");
+    if(!rows.length){$("#programList").innerHTML=`<div class="empty">No hay coincidencias. Ajusta los filtros.</div>`;return;}
+    if(!rows.some(p=>p.id===state.selected)){state.selected=rows[0].id;state.tab="summary";renderMain();}
+    document.querySelectorAll("[data-program]").forEach(btn=>btn.addEventListener("click",()=>{state.selected=btn.dataset.program;state.tab="summary";renderList();renderMain();window.scrollTo({top:document.querySelector(".layout").offsetTop,behavior:"smooth"});}));
+  }
+
+  function diagnostic(p){
+    const g=profileGuidance[state.profile];
+    return [g.question,`¿Qué resultado concreto esperas obtener en tu organización o carrera?`,`¿Qué experiencia previa tienes relacionada con ${p.category.toLowerCase()}?`,`¿Qué disponibilidad tienes para ${p.schedule.toLowerCase()}?`,`¿Cumples con los requisitos de grado y experiencia indicados?`,`¿Quién participa en la decisión y qué plazo manejas para matricularte?`];
+  }
+  function speech(p,long=false){
+    const g=profileGuidance[state.profile];
+    const base=`${p.short} de Pacífico Business School está diseñado ${g.lead}. ${p.promise}`;
+    if(!long)return `${base} Tiene una duración de ${p.duration}, modalidad ${p.modality.toLowerCase()} e inicia el ${p.start}. ¿Qué objetivo profesional o de negocio te gustaría trabajar?`;
+    return `${base} El programa está dirigido a ${p.audience.charAt(0).toLowerCase()+p.audience.slice(1)} Su enfoque combina ${p.differentials.slice(0,2).map(x=>x.replace(/\.$/,"").toLowerCase()).join(" y ")}. La inversión indicada es ${money(p.investment)}; la duración es ${p.duration} y el horario es ${p.schedule.toLowerCase()}. Para orientarte mejor: ${g.question}`;
+  }
+  function objections(p){
+    const g=profileGuidance[state.profile];
+    return [
+      {q:g.objection,a:`El brochure presenta ${p.differentials[0].toLowerCase()} y ${p.differentials[1].toLowerCase()} Podemos revisar la malla y tu objetivo para comprobar el encaje sin asumir resultados no garantizados.`},
+      {q:"No tengo tiempo.",a:`El horario publicado es ${p.schedule}. La duración es ${p.duration}. Conviene contrastar estas franjas con tu agenda antes de avanzar.`},
+      {q:"La inversión es alta.",a:`La inversión publicada es ${money(p.investment)}. Para evaluar su pertinencia, podemos relacionar los módulos y diferenciales con el reto específico que buscas resolver. El brochure no detalla descuentos ni financiamiento; esa información debe confirmarse.`},
+      {q:"¿El diploma está garantizado?",a:`No. Se obtiene al cumplir las condiciones publicadas: ${p.certification.conditions.join("; ").toLowerCase()}.`},
+      {q:"¿Quiénes dictarán las clases?",a:`El brochure presenta a ${p.faculty.map(f=>f.name).join(", ")}. También señala que la plana docente puede variar por fuerza mayor o disponibilidad cuando esa nota aplica.`}
+    ];
+  }
+
+  function panelContent(p,tab){
+    const g=profileGuidance[state.profile];
+    if(tab==="summary")return `<div class="section-grid"><section class="section"><h3>Propuesta de valor</h3><p>${esc(p.promise)}</p></section><section class="section"><h3>Público objetivo</h3><p>${esc(p.audience)}</p></section><section class="section"><h3>Objetivos</h3>${list(p.objectives)}</section><section class="section"><h3>Diferenciales</h3>${list(p.differentials)}</section><section class="section"><h3>Beneficios destacados para ${esc(state.profile.toLowerCase())}</h3>${list([g.lead.charAt(0).toUpperCase()+g.lead.slice(1)+".",...p.benefits.slice(0,3)])}</section><section class="section"><h3>Herramientas</h3>${list(p.tools)}</section><section class="section wide"><h3>Notas importantes</h3>${list(p.notes)}<p class="source">Fuente: ${esc(p.source)}</p></section></div>`;
+    if(tab==="speech")return `<article class="speech-card"><h3>Speech inicial · 30 segundos</h3><p class="speech-text">${esc(speech(p,false))}</p><button type="button" class="copy-btn" data-copy="${esc(speech(p,false))}">Copiar speech</button></article><article class="speech-card"><h3>Speech ampliado · aproximadamente 1 minuto</h3><p class="speech-text">${esc(speech(p,true))}</p><button type="button" class="copy-btn" data-copy="${esc(speech(p,true))}">Copiar speech</button></article><div class="section-grid"><section class="section"><h3>Argumentos principales</h3>${list(p.differentials.slice(0,4))}</section><section class="section"><h3>Resultados que podría obtener</h3>${list(p.benefits)}<p class="source">Resultados potenciales derivados de los objetivos del brochure; no constituyen garantía.</p></section><section class="section"><h3>Perfiles ideales</h3>${list(p.profiles)}</section><section class="section"><h3>Siguiente paso recomendado</h3><p>Validar objetivo, requisitos y disponibilidad; después confirmar con el área comercial la vigencia de la edición y cualquier condición no publicada.</p><button type="button" class="copy-btn" data-copy="Validemos tu objetivo, los requisitos y el horario. Luego podemos confirmar la vigencia de esta edición y avanzar con el siguiente paso de matrícula.">Copiar siguiente paso</button></section></div>`;
+    if(tab==="diagnosis")return `<div class="section-grid"><section class="section"><h3>Preguntas de diagnóstico</h3>${list(diagnostic(p))}</section><section class="section"><h3>Necesidades que aborda</h3>${list(p.objectives.slice(0,4))}</section><section class="section wide"><h3>Preguntas de cierre</h3>${list([g.close,"¿Qué información adicional necesitas para decidir el siguiente paso?","¿Confirmamos primero el cumplimiento de requisitos y tu disponibilidad de horario?"])}</section></div>`;
+    if(tab==="curriculum")return `<div>${p.modules.map(m=>`<article class="module"><strong>${esc(m.name)}</strong>${list(m.items)}</article>`).join("")}</div>`;
+    if(tab==="profile")return `<div class="section-grid"><section class="section"><h3>Público objetivo</h3><p>${esc(p.audience)}</p></section><section class="section"><h3>Requisitos</h3>${list(p.requirements)}</section><section class="section wide"><h3>Perfiles profesionales relacionados</h3>${list(p.profiles)}</section></div>`;
+    if(tab==="objections")return `<div class="section-grid">${objections(p).map(o=>`<article class="section"><h3>${esc(o.q)}</h3><p>${esc(o.a)}</p><button type="button" class="copy-btn" data-copy="${esc(o.a)}">Copiar respuesta</button></article>`).join("")}</div>`;
+    if(tab==="faculty")return `<div class="faculty-grid">${p.faculty.map(f=>`<article class="faculty"><h3>${esc(f.name)}</h3><div class="role">${esc(f.role)}</div><p>${esc(f.bio)}</p></article>`).join("")}</div><p class="source">Experiencia resumida exclusivamente desde el brochure. Revisa las notas del programa sobre posibles cambios de plana docente.</p>`;
+    if(tab==="certification")return `<div class="section-grid"><section class="section"><h3>${esc(p.certification.title)}</h3><p><strong>Emite:</strong> ${esc(p.certification.issuer)}</p><p>${esc(p.certification.extra)}</p></section><section class="section"><h3>Condiciones para obtenerlo</h3>${list(p.certification.conditions)}</section><section class="section wide"><h3>Información faltante</h3>${list(["Año explícito de la fecha de inicio: "+CONFIRM,"Fecha de cierre de inscripciones: "+CONFIRM,"Política de descuentos o financiamiento: "+CONFIRM])}</section></div>`;
+    return "";
+  }
+
+  const tabs=[['summary','Resumen'],['speech','Speech comercial'],['diagnosis','Diagnóstico'],['curriculum','Malla curricular'],['profile','Perfil y requisitos'],['objections','Objeciones'],['faculty','Docentes'],['certification','Certificación']];
+  function renderMain(){
+    const p=getProgram();if(!p)return;
+    $("#mainContent").innerHTML=`<section class="hero"><div><p class="eyebrow">${esc(p.type)} · ${esc(p.category)}</p><h2>${esc(p.name)}</h2><p class="promise">${esc(p.promise)}</p><div class="compare-row"><button class="compare-btn" id="toggleCompare" type="button">${state.compare.has(p.id)?"Quitar de comparación":"Añadir a comparación"}</button><button class="compare-btn secondary" id="openCompare" type="button">Comparar programas (${state.compare.size})</button></div></div><aside class="key-panel" aria-label="Información clave"><h3>Información clave</h3><div class="key-grid"><div class="key-item"><small>Inicio</small><strong>${esc(p.start)}</strong></div><div class="key-item"><small>Duración</small><strong>${esc(p.duration)}</strong></div><div class="key-item"><small>Modalidad</small><strong>${esc(p.modality)}</strong></div><div class="key-item"><small>Inversión</small><strong>${money(p.investment)}</strong></div><div class="key-item"><small>Frecuencia</small><strong>${missing(p.frequency)}</strong></div><div class="key-item"><small>Horario</small><strong>${esc(p.schedule)}</strong></div></div></aside></section><section class="profile-box"><div class="field"><label for="profileSelect">Adaptar guía al perfil del prospecto</label><select id="profileSelect">${Object.keys(profileGuidance).map(x=>`<option ${x===state.profile?"selected":""}>${esc(x)}</option>`).join("")}</select></div><p class="profile-note">El perfil modifica el speech, los beneficios, las preguntas, los argumentos y la primera objeción.</p></section><nav class="tabs" role="tablist" aria-label="Ficha del programa">${tabs.map(([id,label])=>`<button type="button" class="tab-btn" role="tab" id="tab-${id}" aria-controls="panel-${id}" aria-selected="${state.tab===id}" data-tab="${id}">${label}</button>`).join("")}</nav><section class="tab-panel" role="tabpanel" id="panel-${state.tab}" aria-labelledby="tab-${state.tab}">${panelContent(p,state.tab)}</section>`;
+    $("#profileSelect").addEventListener("change",e=>{state.profile=e.target.value;renderMain();});
+    document.querySelectorAll("[data-tab]").forEach(btn=>btn.addEventListener("click",()=>{state.tab=btn.dataset.tab;renderMain();}));
+    $("#toggleCompare").addEventListener("click",()=>{state.compare.has(p.id)?state.compare.delete(p.id):state.compare.add(p.id);renderMain();});
+    $("#openCompare").addEventListener("click",openComparison);
+    wireCopyButtons();
+  }
+
+  function wireCopyButtons(){document.querySelectorAll("[data-copy]").forEach(btn=>btn.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(btn.dataset.copy)}catch{const t=document.createElement("textarea");t.value=btn.dataset.copy;document.body.append(t);t.select();document.execCommand("copy");t.remove()}btn.textContent="Copiado";btn.classList.add("copied");setTimeout(()=>{btn.textContent=btn.closest(".speech-card")?"Copiar speech":btn.dataset.copy.startsWith("Validemos")?"Copiar siguiente paso":"Copiar respuesta";btn.classList.remove("copied")},1600)}));}
+  function openComparison(){
+    const selected=state.compare.size?[...state.compare].map(id=>programs.find(p=>p.id===id)):programs;
+    const fields=[["Tipo","type"],["Categoría","category"],["Inicio","start"],["Duración","duration"],["Frecuencia","frequency"],["Horario","schedule"],["Modalidad","modality"],["Inversión","investment"],["Requisitos","requirements"]];
+    $("#compareBody").innerHTML=`${state.compare.size<2?'<p class="notice">Añade dos o más programas para una comparación enfocada. Mientras tanto se muestran todos.</p>':''}<div class="compare-wrap"><table><thead><tr><th>Dato</th>${selected.map(p=>`<th>${esc(p.short)}</th>`).join("")}</tr></thead><tbody>${fields.map(([label,key])=>`<tr><th>${label}</th>${selected.map(p=>`<td>${key==='investment'?money(p[key]):Array.isArray(p[key])?p[key].map(esc).join('<br>'):missing(p[key])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    $("#compareDialog").showModal();
+  }
+
+  const normalize=text=>text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9\s]/g," ");
+  function programsInQuestion(question){
+    const q=normalize(question);const found=[];
+    if(/business|data|analytics|analitica/.test(q))found.push(programs[0]);
+    if(/liderazgo|adaptacion|cambio/.test(q))found.push(programs[1]);
+    if(/project finance|evaluacion privada|finanzas|financiero/.test(q))found.push(programs[2]);
+    return [...new Set(found)];
+  }
+  function assistantAnswer(question){
+    const q=normalize(question);let targets=programsInQuestion(question);
+    const asksAll=/todos|todas|compara|diferencia|opciones/.test(q);
+    const recommend=/recomienda|recomendacion|cual programa|que programa|me conviene|adecuado/.test(q);
+    if(recommend){
+      const scores=programs.map(p=>({p,score:0,reasons:[]}));
+      const add=(index,points,reason)=>{scores[index].score+=points;scores[index].reasons.push(reason)};
+      if(/datos|analytics|analitica|inteligencia artificial|marketing|tecnologia|dashboard|power bi/.test(q))add(0,3,"analítica de datos, IA aplicada y decisiones basadas en evidencia");
+      if(/lider|gerente|equipo|cambio|conflicto|autoridad|transformacion/.test(q))add(1,3,"liderazgo, cambio adaptativo y conflictos organizacionales");
+      if(/finanza|inversion|proyecto|valorizacion|rentabilidad|flujo de caja/.test(q))add(2,3,"evaluación financiera, rentabilidad y financiamiento de proyectos");
+      if(/presencial|semipresencial/.test(q))add(1,1,"es la única alternativa semipresencial publicada");
+      const best=scores.sort((a,b)=>b.score-a.score)[0];
+      if(best.score===0)return {text:`Para recomendar con sustento necesito conocer el reto principal del prospecto: datos y decisiones, liderazgo y cambio, o evaluación financiera de proyectos. También conviene validar requisitos, horario y modalidad.`,source:"Brochures de los tres programas"};
+      return {text:`La alternativa con mayor afinidad es ${best.p.name}, por su enfoque en ${best.reasons.join(" y ")}.\n\nAntes de recomendarla de forma definitiva, valida el objetivo concreto del prospecto, el cumplimiento de requisitos y su disponibilidad para ${best.p.schedule.toLowerCase()}.`,source:best.p.source};
+    }
+    if(asksAll)targets=programs;
+    if(!targets.length)targets=[getProgram()];
+    if(/descuento|financiamiento|cuota|beca|promocion/.test(q))return {text:`Descuentos, financiamiento, cuotas, becas o promociones: ${CONFIRM}. Los brochures suministrados no detallan estas condiciones.`,source:targets.map(p=>p.source).join(" · ")};
+    const requested=[];
+    if(/inversion|precio|costo|cuanto/.test(q))requested.push(["Inversión",p=>money(p.investment)]);
+    if(/inicio|fecha|cuando/.test(q))requested.push(["Inicio",p=>`${p.start}; el año no está indicado explícitamente en el brochure`]);
+    if(/horario|hora|dias|dia/.test(q))requested.push(["Horario",p=>p.schedule]);
+    if(/modalidad|remoto|presencial|semipresencial/.test(q))requested.push(["Modalidad",p=>p.modality+(p.id==="liderazgo-estrategico"?"; incluye tres sesiones presenciales":"")]);
+    if(/duracion|meses|tiempo/.test(q))requested.push(["Duración",p=>p.duration]);
+    if(/frecuencia/.test(q))requested.push(["Frecuencia",p=>p.frequency]);
+    if(/requisito|postular|bachiller|experiencia/.test(q))requested.push(["Requisitos",p=>p.requirements.join("; ")]);
+    if(/docente|profesor|plana/.test(q))requested.push(["Docentes",p=>p.faculty.map(f=>`${f.name} (${f.role})`).join("; ")]);
+    if(/diploma|certificado|certificacion|aprobar|asistencia|nota/.test(q))requested.push(["Certificación",p=>`${p.certification.title}, emitido por ${p.certification.issuer}. Condiciones: ${p.certification.conditions.join("; ")}. ${p.certification.extra}`]);
+    if(/malla|modulo|curso|contenido|temario/.test(q))requested.push(["Malla",p=>p.modules.map(m=>m.name).join("; ")]);
+    if(/herramienta|software|power bi|orange/.test(q))requested.push(["Herramientas",p=>p.tools.join("; ")]);
+    if(/perfil|publico|dirigido|quien/.test(q))requested.push(["Público objetivo",p=>p.audience]);
+    if(/beneficio|diferencial|ventaja|valor/.test(q))requested.push(["Diferenciales",p=>p.differentials.join("; ")]);
+    const lines=requested.length?targets.map(p=>`${p.short}\n${requested.map(([label,value])=>`${label}: ${value(p)}`).join("\n")}`):targets.map(p=>`${p.short}\n${p.promise}\nInicio: ${p.start}\nDuración: ${p.duration}\nModalidad: ${p.modality}\nInversión: ${money(p.investment)}`);
+    return {text:lines.join("\n\n"),source:targets.map(p=>p.source).join(" · ")};
+  }
+  function appendAssistantMessage(kind,text,source=""){
+    const message=document.createElement("div");message.className=`assistant-message ${kind}`;message.textContent=text;
+    if(source){const cite=document.createElement("span");cite.className="assistant-source";cite.textContent=`Fuente: ${source}`;message.append(cite);}
+    $("#assistantLog").append(message);$("#assistantLog").scrollTop=$("#assistantLog").scrollHeight;
+  }
+  function askAssistant(question){
+    const clean=question.trim();if(!clean)return;
+    appendAssistantMessage("user",clean);const answer=assistantAnswer(clean);appendAssistantMessage("bot",answer.text,answer.source);
+  }
+  function openAssistant(){
+    if(!$("#assistantLog").children.length)appendAssistantMessage("bot","Hola. Puedo ayudarte a consultar y comparar la información verificada de los programas. ¿Qué necesita saber el asesor?","Brochures suministrados");
+    $("#assistantDialog").showModal();setTimeout(()=>$("#assistantInput").focus(),0);
+  }
+
+  ["search","category","modality","duration","schedule","investment","professional"].forEach(id=>$("#"+id).addEventListener(id==="search"?"input":"change",renderList));
+  $("#clearFilters").addEventListener("click",()=>{["search","category","modality","duration","schedule","investment","professional"].forEach(id=>$("#"+id).value="");renderList();});
+  $("#closeCompare").addEventListener("click",()=>$("#compareDialog").close());
+  $("#compareDialog").addEventListener("click",e=>{if(e.target===$("#compareDialog"))$("#compareDialog").close();});
+  $("#openAssistant").addEventListener("click",openAssistant);
+  $("#closeAssistant").addEventListener("click",()=>$("#assistantDialog").close());
+  $("#assistantDialog").addEventListener("click",e=>{if(e.target===$("#assistantDialog"))$("#assistantDialog").close();});
+  $("#assistantForm").addEventListener("submit",e=>{e.preventDefault();askAssistant($("#assistantInput").value);$("#assistantInput").value="";$("#assistantInput").focus();});
+  document.querySelectorAll("[data-question]").forEach(btn=>btn.addEventListener("click",()=>askAssistant(btn.dataset.question)));
+  populateFilters();renderList();renderMain();
+  </script>
+</body>
+</html>
